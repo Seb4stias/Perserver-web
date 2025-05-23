@@ -1,0 +1,141 @@
+body {
+    font-family: arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.login-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    /* Corrección en box-shadow */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+    transition: background-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+h2 {
+    margin-bottom: 30px;
+    color: #333;
+    transition: color 0.4s ease;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+/* Corrección en el selector: de .login-ps a .input-group */
+.input-group input[type="text"],
+.input-group input[type="password"] {
+    /* Corrección en width */
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    color: #333;
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+
+button[type="submit"] {
+    background-color: #ff0202;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 15px;
+    transition: background-color 0.4s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #cc0101; /* Ligeramente más oscuro en hover para feedback */
+}
+
+.error-message {
+    color: brown;
+    margin-top: 10px;
+    font-size: 0.9em;
+    height: 1.2em;
+}
+
+/* Estilos para el botón de cambiar color */
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+    transition: color 0.4s ease;
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+.theme-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* --- Estilos para el modo oscuro --- */
+body.dark-mode {
+    background-color: #2c2c2c;
+    color: #e0e0e0;
+}
+
+body.dark-mode .login-container {
+    background-color: #3a3a3a;
+    /* Corrección en box-shadow para modo oscuro */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode h2 {
+    color: #f0f0f0; /* Color un poco más claro para h2 en dark mode */
+}
+
+body.dark-mode .input-group label {
+    color: #c0c0c0;
+}
+
+body.dark-mode .input-group input[type="text"],
+body.dark-mode .input-group input[type="password"] {
+    background-color: #4a4a4a;
+    color: #e0e0e0;
+    border-color: #5a5a5a;
+}
+
+body.dark-mode button[type="submit"] {
+    background-color: #e60000; /* Un rojo ligeramente diferente para dark mode */
+}
+
+body.dark-mode button[type="submit"]:hover {
+    background-color: #b30000; /* Hover más oscuro en dark mode */
+}
+
+body.dark-mode .theme-toggle {
+    color: #f0f0f0;
+}
+
+body.dark-mode .theme-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
