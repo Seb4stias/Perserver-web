@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mujeres STEM</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR MEJORADO */
+        #navbar {
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1, #f093fb);
+            background-size: 400% 400%;
+            animation: gradientShift 6s ease infinite;
+            color: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .navbar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .navbar-content h1 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-separator {
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 2px;
+            transform: rotate(45deg);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="white" opacity="0.1"><animate attributeName="opacity" values="0.1;0.3;0.1" dur="2s" repeatCount="indefinite"/></circle><circle cx="80" cy="30" r="1.5" fill="white" opacity="0.1"><animate attributeName="opacity" values="0.1;0.4;0.1" dur="3s" repeatCount="indefinite"/></circle><circle cx="40" cy="70" r="1" fill="white" opacity="0.1"><animate attributeName="opacity" values="0.1;0.5;0.1" dur="2.5s" repeatCount="indefinite"/></circle></svg>');
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.4s both;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* STATS SECTION */
+        .stats {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .stat-item {
+            padding: 2rem;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            transform: translateY(0);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* FORMULARIO MEJORADO */
+        .formulario-seccion {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .formulario-titulo {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: white;
+        }
+
+        #formularioContenedor {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #333;
+            font-size: 1rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.2rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .radio-option:hover {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        .radio-option input[type="radio"]:checked + .radio-label {
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .radio-option:has(input[type="radio"]:checked) {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .enviar-btn {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: block;
+            margin: 2rem auto 0;
+        }
+
+        .enviar-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* QUIENES SOMOS */
+        .quienesSomos {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .quienesSomos-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .quienesSomos h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-transform: capitalize;
+        }
+
+        .quienesSomos p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+        }
+
+        /* DATOS REGISTRADOS */
+        #datosIngresadosContenedor {
+            padding: 4rem 2rem;
+            background: #f8f9fa;
+        }
+
+        #datosIngresadosContenedor h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .datos-ingresados-table {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .datos-ingresados-table th {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .datos-ingresados-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e1e5e9;
+        }
+
+        .datos-ingresados-table tr:hover {
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        /* FLOATING CIRCLES */
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(45deg, rgba(255, 107, 107, 0.1), rgba(78, 205, 196, 0.1));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-circle:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-circle:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-circle:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            bottom: 20%;
+            left: 15%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            #formularioContenedor {
+                padding: 2rem;
+                margin: 0 1rem;
+            }
+
+            .radio-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+    </div>
+    
+    <div id="navbar"></div>
+    
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Construyendo un futuro digital</h1>
+            <p>Club creado para apoyar, visibilizar y unir a mujeres y personas que se identifican con el mundo STEM (Ciencia, Tecnología, Ingeniería y Matemáticas).</p>
+            <button class="cta-button" id="botonUnirse">Déjanos un comentario</button>
+        </div>
+    </section>
+
+    <section id="comoUnirse" class="formulario-seccion" style="display:none;">
+        <h2 class="formulario-titulo">Únete a nuestra comunidad</h2>
+        <div id="formularioContenedor"></div>
+    </section>
+
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">10</div>
+                <div class="stat-label">actualmente somos</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">11/06</div>
+                <div class="stat-label">nuestra próxima charla</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">45</div>
+                <div class="stat-label">proyectos completados</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="quienesSomos">
+        <div class="quienesSomos-content">
+            <h2>¿Quiénes somos?</h2> 
+            <p>Somos una comunidad de mujeres apasionadas por la ciencia, tecnología, ingeniería y matemáticas. Nuestro objetivo es crear un espacio seguro y colaborativo donde podamos crecer profesionalmente, compartir conocimientos y apoyarnos mutuamente en nuestro camino STEM.</p>
+            <p>Creemos firmemente que la diversidad enriquece la innovación y que todas las voces son importantes en la construcción del futuro tecnológico.</p>
+        </div>
+    </section>
+
+    <div id="datosIngresadosContenedor" style="display: none;"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const todosLosDatos = [];
+            const navbar = document.getElementById('navbar');
+            const botonUnirse = document.getElementById('botonUnirse');
+            const formularioContenedor = document.getElementById('formularioContenedor');
+            const seccionFormulario = document.getElementById('comoUnirse');
+            const datosIngresadosContenedor = document.getElementById('datosIngresadosContenedor');
+
+            // Crear navbar mejorado
+            function crearNavbar() {
+                navbar.innerHTML = `
+                    <div class="navbar-content">
+                        <h1>Mujeres STEM</h1>
+                        <div class="nav-links">
+                            <a href="#inicio">Inicio</a>
+                            <div class="nav-separator"></div>
+                            <a href="#programas">Programas</a>
+                            <div class="nav-separator"></div>
+                            <a href="#comunidad">Comunidad</a>
+                            <div class="nav-separator"></div>
+                            <a href="#recursos">Recursos</a>
+                            <div class="nav-separator"></div>
+                            <a href="#contacto">Contacto</a>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Crear formulario mejorado
+            function crearFormularioRegistro() {
+                formularioContenedor.innerHTML = `
+                    <div class="form-group">
+                        <label for="nombre">Nombre completo *</label>
+                        <input type="text" id="nombre" placeholder="Ingresa tu nombre completo">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="numero">Número de teléfono</label>
+                        <input type="text" id="numero" placeholder="Ej: +56 9 1234 5678">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="edad">Edad</label>
+                        <input type="number" id="edad" placeholder="Ingresa tu edad" min="16" max="99">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Correo electrónico *</label>
+                        <input type="email" id="email" placeholder="tu.email@gmail.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Género</label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" name="sexo" value="femenino" id="sexoFemenino">
+                                <label for="sexoFemenino" class="radio-label">Femenino</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" name="sexo" value="masculino" id="sexoMasculino">
+                                <label for="sexoMasculino" class="radio-label">Masculino</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" name="sexo" value="otro" id="sexoOtro">
+                                <label for="sexoOtro" class="radio-label">Otro</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="carrera">Área de interés</label>
+                        <select id="carrera">
+                            <option value="">Selecciona un área</option>
+                            <option value="tens">Técnico en Enfermería</option>
+                            <option value="programacion">Programación</option>
+                            <option value="electricista">Electricidad</option>
+                            <option value="robotica">Robótica</option>
+                            <option value="matematicas">Matemáticas</option>
+                            <option value="ingenieria">Ingeniería</option>
+                            <option value="ciencias">Ciencias</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="comentario">Cuéntanos sobre ti</label>
+                        <textarea id="comentario" placeholder="¿Qué te interesa de STEM? ¿Qué esperas de nuestra comunidad?" rows="4"></textarea>
+                    </div>
+                    
+                    <button type="button" class="enviar-btn" id="enviarFormulario">
+                        Enviar registro
+                    </button>
+                `;
+
+                // Agregar evento al botón de enviar
+                document.getElementById('enviarFormulario').addEventListener('click', manejarEnvioFormulario);
+            }
+
+            // Manejar envío del formulario
+            function manejarEnvioFormulario() {
+                const nombre = document.getElementById('nombre').value.trim();
+                const numero = document.getElementById('numero').value.trim();
+                const edad = document.getElementById('edad').value;
+                const email = document.getElementById('email').value.trim();
+                const sexoSeleccionado = document.querySelector('input[name="sexo"]:checked');
+                const sexo = sexoSeleccionado ? sexoSeleccionado.value : 'No especificado';
+                const carrera = document.getElementById('carrera').value;
+                const comentario = document.getElementById('comentario').value.trim();
+
+                // Validaciones
+                if (!nombre || !email) {
+                    alert('¡Ups! Por favor, ingresa tu nombre y email.');
+                    return;
+                }
+
+                if (!email.includes('@') || !email.includes('.')) {
+                    alert('¡Atención! Por favor, ingresa un correo electrónico válido.');
+                    return;
+                }
+
+                // Guardar datos
+                const nuevosDatos = {
+                    nombre: nombre,
+                    numero: numero || 'No proporcionado',
+                    edad: edad || 'No especificada',
+                    email: email,
+                    sexo: sexo,
+                    carrera: carrera || 'No especificada',
+                    comentario: comentario || 'Sin comentarios'
+                };
+
+                todosLosDatos.push(nuevosDatos);
+                renderizarDatos();
+
+                alert('¡Formulario enviado exitosamente! Gracias por unirte a nuestra comunidad.');
+
+                // Ocultar formulario y mostrar botón
+                formularioContenedor.innerHTML = '';
+                seccionFormulario.style.display = 'none';
+                botonUnirse.style.display = 'block';
+            }
+
+            // Renderizar datos en tabla
+            function renderizarDatos() {
+                if (todosLosDatos.length === 0) {
+                    datosIngresadosContenedor.style.display = 'none';
+                    return;
+                }
+
+                datosIngresadosContenedor.innerHTML = '<h2>Miembros registrados</h2>';
+                const displayTable = document.createElement('table');
+                displayTable.classList.add('datos-ingresados-table');
+
+                const headerRow = displayTable.insertRow();
+                const headers = ['Nombre', 'Teléfono', 'Edad', 'Email', 'Género', 'Área', 'Comentario'];
+                headers.forEach(headerText => {
+                    const th = document.createElement('th');
+                    th.textContent = headerText;
+                    headerRow.appendChild(th);
+                });
+
+                todosLosDatos.forEach(dataItem => {
+                    const row = displayTable.insertRow();
+                    row.insertCell().textContent = dataItem.nombre;
+                    row.insertCell().textContent = dataItem.numero;
+                    row.insertCell().textContent = dataItem.edad;
+                    row.insertCell().textContent = dataItem.email;
+                    row.insertCell().textContent = dataItem.sexo;
+                    row.insertCell().textContent = dataItem.carrera;
+                    row.insertCell().textContent = dataItem.comentario;
+                });
+
+                datosIngresadosContenedor.appendChild(displayTable);
+                datosIngresadosContenedor.style.display = 'block';
+            }
+
+            // Evento del botón principal
+            botonUnirse.addEventListener('click', (event) => {
+                event.preventDefault();
+                crearFormularioRegistro();
+                botonUnirse.style.display = 'none';
+                seccionFormulario.style.display = 'block';
+                seccionFormulario.scrollIntoView({ behavior: 'smooth' });
+            });
+
+            // Inicializar página
+            crearNavbar();
+            renderizarDatos();
+        });
+    </script>
+</body>
+</html>
